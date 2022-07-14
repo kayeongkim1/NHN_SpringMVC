@@ -1,5 +1,6 @@
 package com.nhn.commerce.controller
 
+import com.nhn.commerce.model.Product
 import com.nhn.commerce.service.ProductService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -21,6 +22,11 @@ class ProductController(
     // TODO (상품 상세 조회 기능 + Exception 처리)
     @GetMapping("/product/detail/{productNo}")
     fun getProductDetail(model: Model, @PathVariable("productNo") productNo: Int): String {
+        val p: Product = productService.getProductDetail(productNo)
+        if (p == null) {
+            println("Exception")
+            return ("product")
+        }
         model.addAttribute("product", productService.getProductDetail(productNo))
         println("상세 조회")
         return "detail"
@@ -44,19 +50,14 @@ class ProductController(
 
 
     // TODO (상품 수정 기능 + Exception 처리)
-//    @GetMapping("/product/update/{productNo}")
-//    fun updateProduct(@PathVariable productNo: Int,
-//                      @RequestBody product: Product
-//    ): ResponseEntity<Any> {
-//        if (productService.getProductDetail(productNo) != null) {
-//            productService.updateProduct(product)
-//            return ResponseEntity.ok().body(true)
-//        }
-//        //throw NotFoundException("product", "productNo: $product.productNo")
-//        throw NotFoundException("product")
-//    }
+
     @GetMapping("/product/update/{productNo}")
     fun updateProduct(model: Model, @PathVariable("productNo") productNo: Int): String {
+        val p: Product = productService.getProductDetail(productNo)
+        if (p == null) {
+            println("Exception")
+            return ("product")
+        }
         model.addAttribute("product", productService.getProductDetail(productNo))
         //println("수정 시작")
         return "update"
@@ -73,18 +74,13 @@ class ProductController(
 
     // TODO (상품 삭제 기능 + Exception 처리)
     @GetMapping("/product/delete")
-//    fun deleteProduct(@PathVariable productNo:Int): ResponseEntity<Any> {
-//        if (productService.getProductDetail(productNo) != null) {
-//            productService.deleteProduct(productNo)
-//            return ResponseEntity
-//                .ok()
-//                .build()
-//        }
-//        //throw NotFoundException("product", "productNo: $productNo")
-//        throw NotFoundException("product")
-//    }
 
     fun deleteProduct(productNo: Int): String {
+        val p: Product = productService.getProductDetail(productNo)
+        if (p == null) {
+            println("Exception")
+            return ("product")
+        }
         productService.deleteProduct(productNo)
         return "redirect:/product"
     }

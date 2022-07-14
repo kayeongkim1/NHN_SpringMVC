@@ -28,4 +28,3 @@ interface ProductRepository {
     fun updateProductWork(productName: String, salePrice: Int, registerView: LocalDateTime, productNo: Int)
 
 }
-

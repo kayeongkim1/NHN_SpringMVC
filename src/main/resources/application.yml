@@ -1,3 +1,4 @@
+# TODO (Database 접속 정보 추가)
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
