@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>상품 상세 페이지</title>
+</head>
+<body>
+<h1>상품 상세 페이지</h1>
+
+<div>
+  <div>
+    <span>상품 번호 : </span>
+    <span th:text="${product.productNo}"></span>
+  </div>
+  <div>
+    <span>상품 이름 : </span>
+    <span th:text="${product.productName}"></span>
+  </div>
+  <div>
+    <span>상품 가격 : </span>
+    <span th:text="${product.salePrice}"></span>
+  </div>
+  <div>
+    <span>등록 날짜 : </span>
+    <span th:text="${product.registerYmdt}"></span>
+  </div>
+  <div>
+    <span>수정 날짜 : </span>
+    <span th:text="${product.updateYmdt}"></span>
+  </div>
+  <input onclick="history.back();" type="button" value="뒤로가기"/>
+
+</div>
+
+</div>
+</body>
+</html>

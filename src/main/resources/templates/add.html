@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>상품 추가 페이지</title>
+</head>
+<body>
+<h1>상품 추가 페이지</h1>
+<form action="/product/addProduct" method="post">
+  <div>
+    <label>상품 이름 : </label>
+    <input name="productName" th:value="*{productName}" type="text">
+  </div>
+  <div>
+    <label>상품 가격 : </label>
+    <input name="salePrice" th:value="*{salePrice}" type="number">
+  </div>
+  <button type="submit">추가하기</button>
+  <input onclick="history.back();" type="button" value="뒤로가기"/>
+
+</form>
+</body>
+</html>
