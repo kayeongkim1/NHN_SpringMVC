@@ -16,27 +16,27 @@
     <th>삭제</th>
     <th>자세히</th>
 
-    <tr th:each="dto : ${productList}">
-        <td>[[${dto.productNo}]]</td>
-        <td>[[${dto.productName}]]</td>
-        <td>[[${dto.salePrice}]]</td>
-        <td>[[${#temporals.format(dto.registerYmdt, 'yyyy/MM/dd HH:mm')}]]</td>
-        <td>[[${#temporals.format(dto.updateYmdt, 'yyyy/MM/dd HH:mm')}]]</td>
+    <tr th:each="data : ${productList}">
+        <td>[[${data.productNo}]]</td>
+        <td>[[${data.productName}]]</td>
+        <td>[[${data.salePrice}]]</td>
+        <td>[[${#temporals.format(data.registerYmdt, 'yyyy/MM/dd HH:mm')}]]</td>
+        <td>[[${#temporals.format(data.updateYmdt, 'yyyy/MM/dd HH:mm')}]]</td>
         <td>
             <button th:onclick="|location.href='@{/product/update/{productNo}
-                        (productNo=${dto.productNo})}'|"
+                        (productNo=${data.productNo})}'|"
                     type="button">수정
             </button>
         </td>
         <td>
-            <button th:onclick="|location.href='@{/product/delete(productNo=${dto.productNo})}'|"
+            <button th:onclick="|location.href='@{/product/delete(productNo=${data.productNo})}'|"
                     type="button">삭제
             </button>
         </td>
         <td>
             <button th:onclick="|location.href='@{/product/detail/{productNo}
-                        (productNo=${dto.productNo})}'|"
-                    type="button">상세
+                        (productNo=${data.productNo})}'|"
+                    type="button">자세히
             </button>
         </td>
     </tr>
